@@ -1,4 +1,3 @@
-// pages/index.jsx
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
 import ErrorModal from "./ErrorModal";
@@ -41,7 +40,7 @@ export default function Home() {
           <h1 className="text-3xl font-bold">AI Logo Generator</h1>
         </div>
       </header>
-      
+
       <main className="container mx-auto px-4 py-8 flex flex-col items-center">
         <input
           type="text"
@@ -53,7 +52,9 @@ export default function Home() {
         />
         <button
           onClick={generateLogos}
-          className={`bg-blue-600 text-white px-4 py-2 rounded transition duration-300 ease-in-out ${loading ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-700"}`}
+          className={`bg-blue-600 text-white px-4 py-2 rounded transition duration-300 ease-in-out ${
+            loading ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-700"
+          }`}
           disabled={loading}
           aria-label="Generate logos button"
         >
@@ -73,13 +74,13 @@ export default function Home() {
           </div>
         )}
       </main>
-      
+
       <footer className="bg-gray-800 text-white py-4">
         <div className="container mx-auto px-4 text-center">
           <p>&copy; Created by Shiv</p>
         </div>
       </footer>
-      
+
       {error && <ErrorModal message={error} onClose={closeModal} />}
     </div>
   );
