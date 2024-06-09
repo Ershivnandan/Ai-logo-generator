@@ -1,10 +1,13 @@
+// pages/index.jsx
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
+import ErrorModal from "./ErrorModal";
 
 export default function Home() {
   const [prompt, setPrompt] = useState("");
   const [logos, setLogos] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const generateLogos = async () => {
     try {
@@ -21,9 +24,14 @@ export default function Home() {
       setLogos(logos[0]);
     } catch (error) {
       console.error("Failed to generate logos:", error);
+      setError("Failed to generate logo. Replicate api must be purchase.");
     } finally {
       setLoading(false);
     }
+  };
+
+  const closeModal = () => {
+    setError(null);
   };
 
   return (
@@ -71,6 +79,8 @@ export default function Home() {
           <p>&copy; Created by Shiv</p>
         </div>
       </footer>
+      
+      {error && <ErrorModal message={error} onClose={closeModal} />}
     </div>
   );
 }
